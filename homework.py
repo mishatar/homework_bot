@@ -37,7 +37,7 @@ def check_tokens():
 
 
 def send_message(bot, message):
-    """Отправляет сообщение в телеграмм"""
+    """Отправляет сообщение в телеграмм."""
     try:
         bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=message)
         logging.debug(f"Сообщение {message} отправлено")
@@ -47,7 +47,7 @@ def send_message(bot, message):
 
 
 def get_api_answer(timestamp):
-    """Делает запрос к эндпоинту API-сервиса"""
+    """Делает запрос к эндпоинту API-сервиса."""
     payload = {'from_date': timestamp}
     try:
         homework_statuses = requests.get(
@@ -63,7 +63,7 @@ def get_api_answer(timestamp):
 
 
 def check_response(response):
-    """Проверяет ответ API"""
+    """Проверяет ответ API."""
     if not isinstance(response, dict):
         raise TypeError('Ответ от API не является словарем')
     if 'homeworks' not in response:
@@ -77,7 +77,7 @@ def check_response(response):
 
 
 def parse_status(homework):
-    """Извлекает информацию о статусе домашней работы"""
+    """Извлекает информацию о статусе домашней работы."""
     if 'homework_name' not in homework:
         raise KeyError('Отсутсвует ключ "homework_name" в ответе API')
     homework_name = homework['homework_name']
