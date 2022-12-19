@@ -63,10 +63,8 @@ def check_response(response):
     """Проверяет ответ API."""
     if not isinstance(response, dict):
         raise TypeError('Ответ от API не является словарем')
-    if 'homeworks' not in response:
-        raise TypeError('Ключ "homeworks" не найден')
-    if 'current_date' not in response:
-        raise TypeError('Ключ "current_date" не найден')
+    if 'homeworks' not in response or 'current_date' not in response:
+        raise TypeError('Ключ "homeworks" или "current_date" не найден')
     current_date = response.get('current_date')
     if not isinstance(current_date, int):
         raise TypeError('current_date не является числом')
